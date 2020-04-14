@@ -1,8 +1,6 @@
 #include<math.h>
 #include "point.h"
 
-#define CURRENT_FOOD_IS_CLOSER_THAN_PREVIOUS_FOOD_TARGETS current_food_distance < distance_of_closest_food
-
 double get_distance_between(Point pointA, Point pointB){
   double dx = pointA.x - pointB.x;
   double dy = pointA.y - pointB.y;
@@ -14,7 +12,7 @@ void get_closest_food(Point food_points[], int points_length, Point current_loca
   int closest_food_index = 0;
   for(int i = 1; i < NUM_OF_FOOD_TARGETS; i++){
     double current_food_distance = get_distance_between(current_location, food_points[i]);
-    if(CURRENT_FOOD_IS_CLOSER_THAN_PREVIOUS_FOOD_TARGETS){
+    if(current_food_distance < distance_of_closest_food){
       closest_food_index = i;
       distance_of_closest_food = current_food_distance;
     };
